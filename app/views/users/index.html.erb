@@ -1,0 +1,19 @@
+<h2>Users</h2>
+
+<br/>
+
+<table class="table">
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.full_name %></td>
+        <td><%= link_to "Profile", user_path(user) %></td>
+        <td>
+          <% unless (current_user && current_user == user) %>
+            <%= link_to "Sign in as #{user.full_name.split(' ').first}", become_user_path(user) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
